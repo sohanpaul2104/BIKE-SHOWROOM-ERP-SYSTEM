@@ -1,0 +1,303 @@
+/* =========================================
+   1. GLOBAL RESET & TYPOGRAPHY
+   ========================================= */
+* {
+    box-sizing: border-box; /* Prevents padding from breaking layouts */
+}
+
+body {
+    font-family: 'Segoe UI', 'Roboto', Helvetica, Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f0f4f8; /* Soft blue-grey background, easier on eyes */
+    color: #333;
+    line-height: 1.6;
+}
+
+h1, h2, h3, h4 {
+    color: #2c3e50;
+    font-weight: 600;
+    margin-top: 0;
+}
+
+/* =========================================
+   2. SIDEBAR NAVIGATION
+   ========================================= */
+.sidebar {
+    width: 260px;
+    height: 100vh;
+    background: linear-gradient(180deg, #2c3e50 0%, #1a252f 100%); /* Subtle Gradient */
+    color: white;
+    padding-top: 25px;
+    position: fixed; /* Fixes sidebar so it doesn't scroll */
+    left: 0;
+    top: 0;
+    box-shadow: 4px 0 15px rgba(0,0,0,0.1);
+    z-index: 1000;
+    overflow-y: auto;
+}
+
+.sidebar h2 {
+    text-align: center;
+    color: #ecf0f1;
+    font-size: 22px;
+    margin-bottom: 30px;
+    padding-bottom: 15px;
+    border-bottom: 1px solid #34495e;
+    letter-spacing: 1px;
+}
+
+.sidebar a {
+    display: block;
+    color: #bdc3c7;
+    text-decoration: none;
+    padding: 15px 25px;
+    margin: 5px 10px;
+    border-radius: 8px;
+    transition: all 0.3s ease;
+    font-size: 15px;
+    border-left: 4px solid transparent;
+}
+
+.sidebar a:hover, .sidebar a.active {
+    background: #34495e;
+    color: white;
+    padding-left: 30px; /* Slide effect */
+    border-left: 4px solid #3498db; /* Blue accent bar */
+    box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+}
+
+/* Specific style for Logout to make it distinct */
+.sidebar a[href*="index.php"], .logout-btn {
+    margin-top: 40px;
+    border: 1px solid #c0392b;
+    color: #e74c3c;
+}
+.sidebar a[href*="index.php"]:hover {
+    background: #c0392b;
+    color: white;
+    border-left: 4px solid #fff;
+}
+
+/* =========================================
+   3. MAIN CONTENT AREA
+   ========================================= */
+.content {
+    margin-left: 260px; /* Pushes content right of fixed sidebar */
+    padding: 40px;
+    min-height: 100vh;
+}
+
+/* Header Sections within content */
+.header, .header-section {
+    background: white;
+    padding: 25px;
+    border-radius: 12px;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05);
+    margin-bottom: 30px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+/* =========================================
+   4. CARDS & DASHBOARD
+   ========================================= */
+.card-container, .card-grid {
+    display: flex;
+    gap: 25px;
+    flex-wrap: wrap; /* Allows wrapping on smaller screens */
+    margin-bottom: 30px;
+}
+
+.card {
+    background: white;
+    flex: 1;
+    min-width: 250px;
+    padding: 25px;
+    border-radius: 15px;
+    text-align: center;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05); /* Soft, deep shadow */
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    border: 1px solid #eee;
+    position: relative;
+    overflow: hidden;
+}
+
+.card:hover {
+    transform: translateY(-8px); /* Lifts up on hover */
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+}
+
+.card h3 {
+    margin: 0;
+    color: #7f8c8d;
+    font-size: 14px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.card h1 {
+    margin: 10px 0 0;
+    font-size: 42px;
+    color: #2c3e50;
+    font-weight: 700;
+}
+
+/* Specific Card Borders for visual pop */
+.card:nth-child(1) { border-bottom: 5px solid #f39c12; }
+.card:nth-child(2) { border-bottom: 5px solid #e74c3c; }
+.card:nth-child(3) { border-bottom: 5px solid #3498db; }
+
+/* =========================================
+   5. FORMS & INPUTS
+   ========================================= */
+form, .form-box, .search-container, .bike-info {
+    background: white;
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05);
+    margin-bottom: 25px;
+}
+
+label {
+    font-weight: 600;
+    font-size: 14px;
+    color: #555;
+    margin-bottom: 5px;
+    display: block;
+}
+
+input[type="text"],
+input[type="number"],
+input[type="date"],
+input[type="password"],
+select,
+textarea {
+    width: 100%;
+    padding: 12px 15px;
+    margin: 8px 0 20px;
+    border: 1px solid #dfe6e9;
+    border-radius: 8px; /* Rounded inputs */
+    font-size: 15px;
+    font-family: inherit;
+    background-color: #fdfdfd;
+    transition: border 0.3s, box-shadow 0.3s;
+}
+
+input:focus, select:focus, textarea:focus {
+    outline: none;
+    border-color: #3498db;
+    box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.15); /* Blue glow */
+    background-color: #fff;
+}
+
+/* =========================================
+   6. BUTTONS
+   ========================================= */
+button, input[type="submit"], .action-btn, .search-btn, .view-stock-btn {
+    background: linear-gradient(135deg, #27ae60 0%, #2ecc71 100%); /* Gradient Green */
+    color: white;
+    padding: 12px 25px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 15px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    transition: all 0.3s ease;
+    display: inline-block;
+    text-align: center;
+    box-shadow: 0 4px 10px rgba(39, 174, 96, 0.3);
+}
+
+button:hover, input[type="submit"]:hover, .action-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 15px rgba(39, 174, 96, 0.4);
+}
+
+/* Secondary Buttons (Back/Cancel) */
+.btn-back, button[type="button"] {
+    background: linear-gradient(135deg, #7f8c8d 0%, #95a5a6 100%);
+    box-shadow: 0 4px 10px rgba(127, 140, 141, 0.3);
+}
+
+/* Blue Buttons (Print/Info) */
+.btn-print, .mark-btn {
+    background: linear-gradient(135deg, #2980b9 0%, #3498db 100%);
+    box-shadow: 0 4px 10px rgba(41, 128, 185, 0.3);
+}
+
+/* =========================================
+   7. TABLES
+   ========================================= */
+.table-container {
+    background: white;
+    padding: 10px;
+    border-radius: 12px;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05);
+    overflow: hidden;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 10px;
+}
+
+thead tr {
+    background-color: #f8f9fa;
+    text-align: left;
+}
+
+th {
+    padding: 15px;
+    color: #2c3e50;
+    font-weight: 700;
+    font-size: 13px;
+    text-transform: uppercase;
+    border-bottom: 2px solid #e1e8ed;
+}
+
+td {
+    padding: 15px;
+    border-bottom: 1px solid #f1f1f1;
+    color: #555;
+    font-size: 14px;
+}
+
+tr:hover {
+    background-color: #f9fbfd; /* Row highlight on hover */
+}
+
+/* =========================================
+   8. ALERTS & BADGES
+   ========================================= */
+.msg-box, .success-box, .error-msg {
+    padding: 15px;
+    border-radius: 8px;
+    margin-bottom: 20px;
+    text-align: center;
+    font-weight: bold;
+}
+
+.success, .success-box {
+    background-color: #d4edda;
+    color: #155724;
+    border: 1px solid #c3e6cb;
+}
+
+.error, .error-msg {
+    background-color: #f8d7da;
+    color: #721c24;
+    border: 1px solid #f5c6cb;
+}
+
+/* Search Dropdown List */
+#bikeList {
+    background: white;
+    border: 1px solid #eee;
+    border-radius: 0 0 8px 8px;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+}
